@@ -1,0 +1,75 @@
+#include <bits/stdc++.h>  // It is basically a header file that includes every standard library.
+using namespace std;
+
+int main () {
+ 	string p; // digunakan untuk input "sesuatu";
+ 	string x; // digunakan untuk input CETAK atau SELESAI bersifat non-sensitive case
+ 	
+ 	//tim penyusun menggunakan while dikarenakan looping hanya berhenti ketika pengguna hanya menginputkan sesuai persyaratan
+ 	while ((x[0] != 's' ||x[0] != 'S') &&
+	 	   (x[1] != 'e' ||x[1] != 'E') &&
+	 	   (x[2] != 'l' ||x[2] != 'L') &&
+	 	   (x[3] != 'e' ||x[3] != 'E') &&
+	 	   (x[4] != 's' ||x[4] != 'S') &&
+	 	   (x[5] != 'a' ||x[5] != 'A') &&
+	 	   (x[6] != 'i' ||x[6] != 'I') &&
+	 	   (x[7] != ';')){
+			
+			//sebelum menginputkan cetak atau selesai akan tampil # pada konsol
+			cout<<"# ";
+			//pengguna input cetak atau selesai yang bersifat non-case sensitive
+ 			cin >>x;
+ 			
+ 			//setelah input cetak harus dipisahkan spasi kemudian input "sesuatu";
+ 			//getline diguanakan agar pengguna dapat menyertakan spasi contoh "Nama : Tim Gokil";
+ 			getline(cin,p);
+ 			
+ 			//untuk menghitung panjang string yang dimasukkan pengguna
+ 			int a = p.length();
+ 			int a1= x.length();
+ 			
+ 			//cek ketika pengguna menginputkan selesai melalui beberapa state dan harus sesuai dengan kondisi dibawah.ini bersifat non-sensitive case
+ 			if ((x[0] == 's' ||x[0] == 'S') && // state q0
+	 	   		(x[1] == 'e' ||x[1] == 'E') && // state q1
+	 	   		(x[2] == 'l' ||x[2] == 'L') && // state q2
+	 	   		(x[3] == 'e' ||x[3] == 'E') && // state q3
+	 	   		(x[4] == 's' ||x[4] == 'S') && // state q4
+	 	   		(x[5] == 'a' ||x[5] == 'A') && // state q5
+	 	   		(x[6] == 'i' ||x[6] == 'I') && // state q6 final
+	 	   		(x[7] == ';')){
+	 	   		
+				//ketika pengguna menginputkan sesuai dengan kondisi maka akan tampil keluaran terimakasih, telah menggunakan progam ini.	
+ 				cout<<"> terimakasih, telah menggunakan progam ini"<<endl;
+ 				return 0;
+ 				
+			}
+			// dibawah ini digunakan untuk mengecek spasi banyak contoh : # CETAK                               "Tim Gokil";
+			// dan akan mengeluarkan : > Tim Gokil
+			int z=1;
+			while (p[z] != '"'){
+				z++;
+			}
+					// cek kondisi ketika pengguna menginputkan cetak melalui beberapa state dan harus sesuai dengan kondisi dibawah. case bersifat non-sensitive 
+			       if( a1 == 5 && a >= 4 &&
+					 (x[0]=='c' || x[0]=='C') && //state q0
+					 (x[1]=='e' || x[1]=='E') && //state q1
+					 (x[2]=='t' || x[2]=='T') && //state q2
+					 (x[3]=='a' || x[3]=='A') && //state q3
+					 (x[4]=='k' || x[4]=='K') && //state q4
+					 p[z]=='"' && p[a-2]=='"' && // p[z] dan p[a-2] digunakan untuk mengetahui berapa panjang string ketika telah menemukan tanda " agar tim penyusun dapat mengeluarkan inputan pengguna.
+					 p[a-1]==';'){ // p[a-1] digunakan untuk mengetahui berapa panjang string ketika telah menemukan tanda ; dan memastikan apakah inputan pengguna sesuai dengan kondisi.
+					 	
+					
+					// Keluaran dari inputan pengguna akan ditampilkan ke konsol melalui proses ini 	
+ 				   	int i=z+1; // i digunakan untuk inisialisasi z , i=z+1 karena kalau hanya i=z maka tampilan adalah : "Tim gokil". oleh karena itu i=z+1 agar keluarannya adalah : Tim gokil.
+ 				   	cout<<"> ";
+						while (i < a-2){
+							cout<<p[i];
+							i++;
+						}cout<<endl;	
+				    
+			}else{
+			 	cout<<"> syntax error"<<endl; //ketika terjadi kesalahan sintaks maka terdapat keluaran syntax error.
+			}		 
+	 } 
+}
